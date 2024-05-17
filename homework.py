@@ -1,24 +1,28 @@
 from abc import ABC, abstractmethod
 
+
 class Weapon(ABC):
     @abstractmethod
     def attack(self):
         pass
 
+
 class Sword(Weapon):
     def attack(self):
-        print("Удар мечом")
+        print("Боец наносит удар мечом")
+
 
 class Bow(Weapon):
     def attack(self):
-        print("Выстрел луком")
+        print("Боец делает выстрел из лука")
+
 
 class Fighter:
     def __init__(self, name):
         self.name = name
         self.weapon = None
 
-    def changeWeapon(self, weapon):
+    def changeWeapon(self, weapon: Weapon):
         self.weapon = weapon
 
     def attack(self):
@@ -27,12 +31,13 @@ class Fighter:
         else:
             return f"{self.name} - нету оружия"
 
+
 class Monster:
     def __init__(self, name):
         self.name = name
 
     def defeate(self):
-        return f"{self.name} - побежден"
+        return f"{self.name} побежден"
 
 if __name__ == "__main__":
     fighter = Fighter("Боец")
@@ -44,7 +49,7 @@ if __name__ == "__main__":
     print(fighter.attack())
     print(monster.defeate())
     fighter.changeWeapon(bow)
-    print("Боец выбирает kлук")
+    print("Боец выбирает лук")
     print(fighter.attack())
     print(monster.defeate())
 
